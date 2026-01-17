@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">SimpleApp</string>
+    <string name="type_book_name">Type book name</string>
+    <string name="content_desc_search">Search</string>
 </resources>

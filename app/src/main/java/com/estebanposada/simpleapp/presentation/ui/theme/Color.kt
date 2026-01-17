@@ -1,4 +1,4 @@
-package com.estebanposada.simpleapp.ui.theme
+package com.estebanposada.simpleapp.presentation.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
