@@ -1,19 +1,19 @@
 package com.estebanposada.simpleapp.data.remote.dto
 
-import kotlinx.serialization.SerialName
+import com.google.gson.annotations.SerializedName
 
 data class BookDto(
-    @SerialName("author_name")
-    val authorNames: List<String>?,
-    @SerialName("cover_edition_key")
-    val coverKey: String?,
-    @SerialName("cover_i")
+    @SerializedName("author_name")
+    val authorNames: List<String>? = null,
+    @SerializedName("cover_edition_key")
+    val coverKey: String? = null,
+    @SerializedName("cover_i")
     val coverAlternativeKey: Int? = null,
-    @SerialName("first_publish_year")
-    val publishYear: Int,
-    val languages: List<String>?,
-    @SerialName("ratings_average")
-    val averageRating: Double,
+    @SerializedName("first_publish_year")
+    val publishYear: Int? = null,
+    val language: List<String>? = null,
+    @SerializedName("ratings_average")
+    val averageRating: Double? = 0.0,
     val key: String,
     val title: String
 )

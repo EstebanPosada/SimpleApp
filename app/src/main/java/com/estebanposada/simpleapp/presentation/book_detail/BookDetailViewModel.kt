@@ -5,6 +5,8 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.estebanposada.simpleapp.common.Constants.BOOK_ID
+import com.estebanposada.simpleapp.common.Resource
 import com.estebanposada.simpleapp.domain.usecase.get_book_detail.GetBookDetailUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -20,15 +22,17 @@ class BookDetailViewModel @Inject constructor(
 
 
     init {
-        savedStateHandle.get<String>("bookId")?.let { id ->
+        savedStateHandle.get<String>(BOOK_ID)?.let { id ->
             getBook(id)
         }
     }
 
     private fun getBook(bookId: String) {
         viewModelScope.launch {
-            val result = getBookDetailUseCase(bookId)
-            _state.value = BookDetailState(book = result)
+            when (val result = getBookDetailUseCase(bookId)) {
+                is Resource.Success -> _state.value = BookDetailState(book = result.data)
+                is Resource.Error -> _state.value = BookDetailState(error = result.error?.message)
+            }
         }
     }
 }

@@ -13,6 +13,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.estebanposada.simpleapp.presentation.book_detail.BookDetailScreen
 import com.estebanposada.simpleapp.presentation.book_list.BookListScreen
+import com.estebanposada.simpleapp.presentation.ui.theme.PurpleGrey80
 import com.estebanposada.simpleapp.presentation.ui.theme.SimpleAppTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -24,7 +25,10 @@ class MainActivity : ComponentActivity() {
         setContent {
             SimpleAppTheme {
                 val navController = rememberNavController()
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+                Scaffold(
+                    modifier = Modifier.fillMaxSize(),
+                    containerColor = PurpleGrey80
+                ) { innerPadding ->
                     NavHost(
                         navController = navController,
                         startDestination = Screen.BookListScreen.route,

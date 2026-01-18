@@ -6,6 +6,7 @@ data class BookDetailDto(
     val key: String,
     val last_modified: LastModified,
     val latest_revision: Int,
+    val description: String,
     val links: List<Link>?,
     val revision: Int,
     val subject_people: List<String>?,

@@ -14,9 +14,9 @@ fun BookDto.toBook(): Book = Book(
         "https://covers.openlibrary.org/b/id/${coverAlternativeKey}-L.jpg"
     },
     authors = authorNames ?: emptyList(),
-    languages = languages ?: emptyList(),
+    languages = language ?: emptyList(),
     publishYear = publishYear.toString(),
-    rating = averageRating
+    rating = averageRating ?: 0.0
 )
 
 fun BookDetailDto.toBookDetail(): BookDetail = BookDetail(

@@ -6,5 +6,5 @@ data class BookListState(
     val isLoading: Boolean = false,
     val query: String = "",
     val books: List<Book> = emptyList(),
-    val error: String = ""
+    val error: String? = null
 )

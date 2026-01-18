@@ -1,5 +1,6 @@
 package com.estebanposada.simpleapp.presentation.book_list
 
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -18,8 +19,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.estebanposada.simpleapp.domain.model.Book
-import com.estebanposada.simpleapp.presentation.SearchBar
 import com.estebanposada.simpleapp.presentation.book_list.components.BookListItem
+import com.estebanposada.simpleapp.presentation.book_list.components.SearchBar
 
 @Composable
 fun BookListScreen(
@@ -37,10 +38,17 @@ fun BookList(
     onSearch: () -> Unit,
     onItemCLick: (String) -> Unit
 ) {
-    Box(modifier = Modifier.fillMaxSize().padding(16.dp)) {
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+            .padding(16.dp)
+    ) {
         Column {
             SearchBar(query = state.query, onQueryChange = onQuerySearch, onSearch = onSearch)
-            LazyColumn(modifier = Modifier.fillMaxSize()) {
+            LazyColumn(
+                modifier = Modifier.fillMaxSize(),
+                verticalArrangement = Arrangement.spacedBy(6.dp)
+            ) {
                 items(state.books) { book ->
                     BookListItem(
                         book = book,
@@ -49,20 +57,21 @@ fun BookList(
                 }
             }
         }
-        if (state.error.isNotBlank()) {
-            Text(
-                text = state.error,
-                style = MaterialTheme.typography.bodyMedium,
-                color = MaterialTheme.colorScheme.error,
-                textAlign = TextAlign.Center,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(horizontal = 20.dp)
-                    .align(Alignment.Center)
-            )
-        }
-        if (state.isLoading) {
-            CircularProgressIndicator(modifier = Modifier.align(Alignment.Center))
+        when {
+            state.error != null -> {
+                Text(
+                    text = state.error,
+                    style = MaterialTheme.typography.bodyMedium,
+                    color = MaterialTheme.colorScheme.error,
+                    textAlign = TextAlign.Center,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 20.dp)
+                        .align(Alignment.Center)
+                )
+            }
+
+            state.isLoading -> CircularProgressIndicator(modifier = Modifier.align(Alignment.Center))
         }
     }
 }

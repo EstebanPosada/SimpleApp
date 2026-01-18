@@ -68,6 +68,9 @@ dependencies {
     implementation(libs.retrofit.converter.gson)
     implementation(libs.logging.interceptor)
 
+    testImplementation(libs.mockk)
+    testImplementation(libs.truth)
+    testImplementation(libs.kotlinx.coroutines.test)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
