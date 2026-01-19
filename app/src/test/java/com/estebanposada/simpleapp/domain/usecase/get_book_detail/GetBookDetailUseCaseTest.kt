@@ -1,14 +1,13 @@
 package com.estebanposada.simpleapp.domain.usecase.get_book_detail
 
 import com.estebanposada.simpleapp.bookDetailDto
-import com.estebanposada.simpleapp.common.Resource
+import com.estebanposada.simpleapp.domain.util.Resource
 import com.estebanposada.simpleapp.data.remote.mapper.toBookDetail
 import com.estebanposada.simpleapp.domain.repository.BookRepository
 import com.google.common.truth.Truth.assertThat
 import io.mockk.coEvery
 import io.mockk.mockk
 import kotlinx.coroutines.test.runTest
-import okio.IOException
 import org.junit.Before
 import org.junit.Test
 

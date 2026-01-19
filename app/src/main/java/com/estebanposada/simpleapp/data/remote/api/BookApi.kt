@@ -1,7 +1,7 @@
-package com.estebanposada.simpleapp.data.remote
+package com.estebanposada.simpleapp.data.remote.api
 
+import com.estebanposada.simpleapp.data.remote.dto.BookDetailDto
 import com.estebanposada.simpleapp.data.remote.dto.SearchDto
-import com.estebanposada.simpleapp.data.remote.dto.test.BookDetailDto
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query

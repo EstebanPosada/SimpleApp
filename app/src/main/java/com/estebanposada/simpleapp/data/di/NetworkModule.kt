@@ -1,9 +1,7 @@
 package com.estebanposada.simpleapp.data.di
 
 import com.estebanposada.simpleapp.BuildConfig
-import com.estebanposada.simpleapp.data.remote.BookApi
-import com.estebanposada.simpleapp.data.repository.BookRepositoryImpl
-import com.estebanposada.simpleapp.domain.repository.BookRepository
+import com.estebanposada.simpleapp.data.remote.api.BookApi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -17,7 +15,7 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-object AppModule {
+object NetworkModule {
 
     @Singleton
     @Provides
@@ -39,8 +37,4 @@ object AppModule {
     fun provideBookApi(client: OkHttpClient, factory: GsonConverterFactory): BookApi =
         Retrofit.Builder().baseUrl(BuildConfig.BASE_URL)
             .client(client).addConverterFactory(factory).build().create()
-
-    @Provides
-    @Singleton
-    fun provideBookRepository(api: BookApi): BookRepository = BookRepositoryImpl(api)
 }

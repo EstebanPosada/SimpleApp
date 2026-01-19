@@ -15,5 +15,7 @@ data class BookDto(
     @SerializedName("ratings_average")
     val averageRating: Double? = 0.0,
     val key: String,
-    val title: String
+    val title: String,
+    val description: String? = null,
+    val links: List<String>? = null,
 )

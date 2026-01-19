@@ -1,7 +1,7 @@
 package com.estebanposada.simpleapp.domain.usecase.get_books
 
 import com.estebanposada.simpleapp.bookDto
-import com.estebanposada.simpleapp.common.Resource
+import com.estebanposada.simpleapp.domain.util.Resource
 import com.estebanposada.simpleapp.data.remote.mapper.toBook
 import com.estebanposada.simpleapp.domain.repository.BookRepository
 import com.google.common.truth.Truth.assertThat

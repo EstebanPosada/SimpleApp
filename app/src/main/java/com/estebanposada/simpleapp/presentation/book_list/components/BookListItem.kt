@@ -67,7 +67,8 @@ fun BookListItem(
             contentDescription = "Book image cover"
         )
         Column(
-            modifier = Modifier.weight(1f)
+            modifier = Modifier
+                .weight(1f)
                 .padding(10.dp)
                 .wrapContentHeight(),
             verticalArrangement = Arrangement.Bottom
@@ -81,12 +82,14 @@ fun BookListItem(
             book.authors.firstOrNull()?.let { author ->
                 Text(text = author, style = MaterialTheme.typography.bodyLarge)
             }
-            Row(verticalAlignment = Alignment.CenterVertically) {
-                Text(
-                    text = "${round(book.rating * 10) / 10.0}",
-                    style = MaterialTheme.typography.bodyMedium
-                )
-                Icon(imageVector = Icons.Default.Star, contentDescription = "rating")
+            book.rating?.let {
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    Text(
+                        text = "${round(book.rating * 10) / 10.0}",
+                        style = MaterialTheme.typography.bodyMedium
+                    )
+                    Icon(imageVector = Icons.Default.Star, contentDescription = "rating")
+                }
             }
         }
         Icon(
@@ -107,7 +110,8 @@ private fun BookListItemPreview() {
         languages = listOf("lang"),
         publishYear = "1959",
         rating = 4.5,
-        title = "Title"
+        title = "Title",
+        description = "Description"
     )
     BookListItem(book) { }
 }

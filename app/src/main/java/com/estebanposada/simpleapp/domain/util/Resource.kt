@@ -1,4 +1,6 @@
-package com.estebanposada.simpleapp.common
+package com.estebanposada.simpleapp.domain.util
+
+import com.estebanposada.simpleapp.domain.util.Constants
 
 sealed class Resource<out T> {
     data class Success<T>(val data: T) : Resource<T>()

@@ -7,6 +7,8 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.aspectRatio
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -25,8 +27,10 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clipToBounds
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -72,6 +76,7 @@ fun BookDetail(state: BookDetailState, onBack: () -> Unit) {
                             .weight(0.3f)
                             .fillMaxWidth()
                             .background(Purple40)
+                            .clipToBounds()
                     ) {
                         IconButton(
                             onClick = onBack, modifier = Modifier
@@ -91,9 +96,12 @@ fun BookDetail(state: BookDetailState, onBack: () -> Unit) {
                                 .error(R.drawable.book_error).build()
                         )
                         Image(
-                            modifier = Modifier.fillMaxSize(),
+                            modifier = Modifier
+                                .align(Alignment.Center)
+                                .fillMaxHeight()
+                                .aspectRatio(3f / 4f),
                             painter = painter,
-                            contentScale = ContentScale.Crop,
+                            contentScale = ContentScale.Fit,
                             contentDescription = "Book cover"
                         )
                     }
@@ -117,7 +125,7 @@ fun BookDetail(state: BookDetailState, onBack: () -> Unit) {
                                 textAlign = TextAlign.Center
                             )
                             Text(
-                                text = state.book.subject_people?.joinToString() ?: "",
+                                text = state.book.authors.joinToString(", "),
                                 style = MaterialTheme.typography.titleMedium,
                                 textAlign = TextAlign.Center
                             )
@@ -141,7 +149,7 @@ fun BookDetail(state: BookDetailState, onBack: () -> Unit) {
                                     }
                                 }
                             }
-                            if (state.book.languages.isNotEmpty()) {
+                            if (state.book.languages?.isNotEmpty() == true) {
                                 Column(horizontalAlignment = Alignment.CenterHorizontally) {
                                     Text(
                                         text = "Languages",
@@ -162,7 +170,8 @@ fun BookDetail(state: BookDetailState, onBack: () -> Unit) {
                             }
                             Text(text = "Synopsis", style = MaterialTheme.typography.titleLarge)
                             Text(
-                                text = state.book.title,
+                                text = state.book.description
+                                    ?: stringResource(R.string.unavailable),
                                 style = MaterialTheme.typography.bodyMedium,
                                 textAlign = TextAlign.Justify
                             )

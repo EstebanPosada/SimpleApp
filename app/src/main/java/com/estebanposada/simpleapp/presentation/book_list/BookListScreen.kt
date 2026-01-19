@@ -86,7 +86,8 @@ private fun BookListPreview() {
         languages = listOf("lang"),
         publishYear = "1959",
         rating = 4.5,
-        title = "Title"
+        title = "Title",
+        description = "Description"
     )
     val books = mutableListOf<Book>()
     repeat(5, { books.add(book) })

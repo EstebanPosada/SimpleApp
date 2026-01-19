@@ -3,10 +3,10 @@ package com.estebanposada.simpleapp
 import com.estebanposada.simpleapp.data.remote.dto.BookDto
 import com.estebanposada.simpleapp.data.remote.dto.test.Author
 import com.estebanposada.simpleapp.data.remote.dto.test.AuthorX
-import com.estebanposada.simpleapp.data.remote.dto.test.BookDetailDto
+import com.estebanposada.simpleapp.data.remote.dto.BookDetailDto
 import com.estebanposada.simpleapp.data.remote.dto.test.Created
 import com.estebanposada.simpleapp.data.remote.dto.test.LastModified
-import com.estebanposada.simpleapp.data.remote.dto.test.Link
+import com.estebanposada.simpleapp.data.remote.dto.Link
 import com.estebanposada.simpleapp.data.remote.dto.test.TypeXX
 
 val bookDetailDto = BookDetailDto(

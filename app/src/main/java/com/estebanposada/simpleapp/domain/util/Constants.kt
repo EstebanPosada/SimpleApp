@@ -1,4 +1,4 @@
-package com.estebanposada.simpleapp.common
+package com.estebanposada.simpleapp.domain.util
 
 object Constants {
     const val EMPTY = ""

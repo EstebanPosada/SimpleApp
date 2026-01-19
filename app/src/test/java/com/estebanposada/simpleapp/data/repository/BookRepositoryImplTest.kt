@@ -2,8 +2,8 @@ package com.estebanposada.simpleapp.data.repository
 
 import com.estebanposada.simpleapp.bookDetailDto
 import com.estebanposada.simpleapp.bookDto
-import com.estebanposada.simpleapp.common.Resource
-import com.estebanposada.simpleapp.data.remote.BookApi
+import com.estebanposada.simpleapp.domain.util.Resource
+import com.estebanposada.simpleapp.data.remote.api.BookApi
 import com.estebanposada.simpleapp.data.remote.dto.SearchDto
 import com.estebanposada.simpleapp.data.remote.mapper.toBook
 import com.estebanposada.simpleapp.data.remote.mapper.toBookDetail
