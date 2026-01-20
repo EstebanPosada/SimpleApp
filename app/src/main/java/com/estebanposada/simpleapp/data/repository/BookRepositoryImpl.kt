@@ -18,31 +18,37 @@ class BookRepositoryImpl @Inject constructor(
 ) : BookRepository {
     override suspend fun getBooks(q: String): Resource<List<Book>> = try {
         val response = api.searchBook(q)
-        val data = response.docs.map { it.toBookEntity() }
-        dao.insertAll(data)
-        Resource.Success(response.docs.map { it.toBook() })
+        val booksDto = response.docs.map { it.toBookEntity() }
+        dao.insertAll(booksDto)
+        val books = booksDto.map { it.toBook() }
+        Resource.Success(books)
     } catch (e: IOException) {
+        e.printStackTrace()
         Resource.Error(error = ErrorType.NETWORK, cause = e)
     } catch (e: HttpException) {
+        e.printStackTrace()
         Resource.Error(error = ErrorType.HTTP_ERROR, cause = e)
     } catch (e: Exception) {
+        e.printStackTrace()
         Resource.Error(error = ErrorType.UNKNOWN, cause = e)
     }
 
     override suspend fun getBookById(id: String): Resource<Book> = try {
         val response = api.getDescription(id)
         dao.updateBook(
-            id,
-            response.description ?: "",
-            response.links?.map { it.url } ?: emptyList())
-        val book = dao.getBookById(id)
-        println("Getting: $book")
-        Resource.Success(book.toBook())
+            id = id,
+            description = response.description ?: "",
+            links = response.links?.map { it.url } ?: emptyList())
+        val book = dao.getBookById(id).toBook()
+        Resource.Success(book)
     } catch (e: IOException) {
+        e.printStackTrace()
         Resource.Error(error = ErrorType.NETWORK, cause = e)
     } catch (e: HttpException) {
+        e.printStackTrace()
         Resource.Error(error = ErrorType.HTTP_ERROR, cause = e)
     } catch (e: Exception) {
+        e.printStackTrace()
         Resource.Error(error = ErrorType.UNKNOWN, cause = e)
     }
 }

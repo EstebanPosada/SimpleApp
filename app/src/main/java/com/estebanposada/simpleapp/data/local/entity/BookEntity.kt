@@ -13,6 +13,6 @@ data class BookEntity(
     val publishYear: String,
     val rating: Double,
     val title: String,
-    val description: String,
-    val links: List<String>
+    val description: String?,
+    val links: List<String>,
 )

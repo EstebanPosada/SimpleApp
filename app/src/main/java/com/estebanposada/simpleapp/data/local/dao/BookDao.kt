@@ -9,11 +9,11 @@ import com.estebanposada.simpleapp.data.local.entity.BookEntity
 @Dao
 interface BookDao {
 
-    @Insert(onConflict = OnConflictStrategy.Companion.REPLACE)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertAll(books: List<BookEntity>)
 
-    @Query("SELECT * FROM BookEntity WHERE title LIKE '%' || :q || '%'")
-    suspend fun getBooks(q: String): List<BookEntity>
+//    @Query("SELECT * FROM BookEntity WHERE title LIKE '%' || :q || '%'")
+//    suspend fun getBooks(q: String): List<BookEntity>
 
     @Query("SELECT * FROM BookEntity WHERE id LIKE :id ")
     suspend fun getBookById(id: String): BookEntity

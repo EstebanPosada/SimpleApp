@@ -1,9 +1,9 @@
 package com.estebanposada.simpleapp.domain.usecase.get_book_detail
 
-import com.estebanposada.simpleapp.bookDetailDto
-import com.estebanposada.simpleapp.domain.util.Resource
-import com.estebanposada.simpleapp.data.remote.mapper.toBookDetail
+import com.estebanposada.simpleapp.bookDto
+import com.estebanposada.simpleapp.data.remote.mapper.toBook
 import com.estebanposada.simpleapp.domain.repository.BookRepository
+import com.estebanposada.simpleapp.domain.util.Resource
 import com.google.common.truth.Truth.assertThat
 import io.mockk.coEvery
 import io.mockk.mockk
@@ -34,14 +34,14 @@ class GetBookDetailUseCaseTest {
     @Test
     fun `when getBookDetailUseCase is called, then return successful`() = runTest {
         // Given
-        val bookDetailDto = bookDetailDto.toBookDetail()
-        val response = Resource.Success(bookDetailDto)
+        val bookDto = bookDto.toBook()
+        val response = Resource.Success(bookDto)
         val id = "id"
 
         // When
         coEvery { repository.getBookById(id) } returns response
         val result = getBookDetailUseCase(id)
 
-        assertThat(result).isEqualTo(Resource.Success(bookDetailDto))
+        assertThat(result).isEqualTo(Resource.Success(bookDto))
     }
 }

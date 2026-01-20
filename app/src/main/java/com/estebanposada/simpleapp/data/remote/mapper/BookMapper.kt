@@ -2,9 +2,7 @@ package com.estebanposada.simpleapp.data.remote.mapper
 
 import com.estebanposada.simpleapp.data.local.entity.BookEntity
 import com.estebanposada.simpleapp.data.remote.dto.BookDto
-import com.estebanposada.simpleapp.data.remote.dto.BookDetailDto
 import com.estebanposada.simpleapp.domain.model.Book
-import com.estebanposada.simpleapp.domain.model.BookDetail
 
 fun BookDto.toBook(): Book = Book(
     id = key.substringAfterLast("/"),
@@ -33,13 +31,8 @@ fun BookDto.toBookEntity() = BookEntity(
     publishYear = publishYear.toString(),
     rating = averageRating ?: 0.0,
     title = title,
-    description = description ?: "",
-    links = links ?: emptyList()
-)
-
-fun BookDetailDto.toBookDetail(): BookDetail = BookDetail(
     description = description,
-    links = links,
+    links = links ?: emptyList(),
 )
 
 fun BookEntity.toBook() = Book(
