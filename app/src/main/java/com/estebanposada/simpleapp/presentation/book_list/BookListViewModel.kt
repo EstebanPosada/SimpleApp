@@ -4,9 +4,9 @@ import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.estebanposada.simpleapp.domain.util.Constants.EMPTY
-import com.estebanposada.simpleapp.domain.util.Resource
-import com.estebanposada.simpleapp.domain.usecase.get_books.GetBooksUseCase
+import com.estebanposada.domain.usecase.get_books.GetBooksUseCase
+import com.estebanposada.domain.util.Constants.EMPTY
+import com.estebanposada.domain.util.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -33,7 +33,11 @@ class BookListViewModel @Inject constructor(
                     _state.value.copy(books = result.data, isLoading = false, error = EMPTY)
 
                 is Resource.Error -> _state.value =
-                    _state.value.copy(isLoading = false, error = result.error?.message, books = emptyList())
+                    _state.value.copy(
+                        isLoading = false,
+                        error = result.error?.message,
+                        books = emptyList()
+                    )
             }
         }
     }

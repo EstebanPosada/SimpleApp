@@ -140,7 +140,7 @@ fun BookDetail(state: BookDetailState, onBack: () -> Unit) {
                                             style = MaterialTheme.typography.titleSmall
                                         )
                                         Chip {
-                                            Text(text = "${round(state.book.rating * 10) / 10.0}")
+                                            Text(text = "${round(it * 10) / 10.0}")
                                             Icon(
                                                 imageVector = Icons.Default.Star,
                                                 contentDescription = "rating"
@@ -149,7 +149,7 @@ fun BookDetail(state: BookDetailState, onBack: () -> Unit) {
                                     }
                                 }
                             }
-                            if (state.book.languages?.isNotEmpty() == true) {
+                            state.book.languages?.let {
                                 Column(horizontalAlignment = Alignment.CenterHorizontally) {
                                     Text(
                                         text = "Languages",
@@ -159,7 +159,7 @@ fun BookDetail(state: BookDetailState, onBack: () -> Unit) {
                                         modifier = Modifier.wrapContentSize(Alignment.Center),
                                         horizontalArrangement = Arrangement.Center
                                     ) {
-                                        state.book.languages.forEach { lang ->
+                                        it.forEach { lang ->
                                             Tag(
                                                 modifier = Modifier.padding(2.dp),
                                                 text = lang.uppercase()

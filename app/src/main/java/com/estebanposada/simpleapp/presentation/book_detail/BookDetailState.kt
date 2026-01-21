@@ -1,6 +1,6 @@
 package com.estebanposada.simpleapp.presentation.book_detail
 
-import com.estebanposada.simpleapp.domain.model.Book
+import com.estebanposada.domain.model.Book
 
 data class BookDetailState(
     val isLoading: Boolean = false,

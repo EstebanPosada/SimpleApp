@@ -18,7 +18,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.estebanposada.simpleapp.domain.model.Book
+import com.estebanposada.domain.model.Book
 import com.estebanposada.simpleapp.presentation.book_list.components.BookListItem
 import com.estebanposada.simpleapp.presentation.book_list.components.SearchBar
 

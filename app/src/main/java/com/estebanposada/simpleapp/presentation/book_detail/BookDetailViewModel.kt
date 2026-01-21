@@ -5,9 +5,9 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.estebanposada.simpleapp.domain.util.Constants.BOOK_ID
-import com.estebanposada.simpleapp.domain.util.Resource
-import com.estebanposada.simpleapp.domain.usecase.get_book_detail.GetBookDetailUseCase
+import com.estebanposada.domain.usecase.get_book_detail.GetBookDetailUseCase
+import com.estebanposada.domain.util.Constants.BOOK_ID
+import com.estebanposada.domain.util.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject

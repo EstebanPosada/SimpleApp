@@ -32,8 +32,8 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import coil.compose.rememberAsyncImagePainter
 import coil.request.ImageRequest
+import com.estebanposada.domain.model.Book
 import com.estebanposada.simpleapp.R
-import com.estebanposada.simpleapp.domain.model.Book
 import kotlin.math.round
 
 @Composable
@@ -85,7 +85,7 @@ fun BookListItem(
             book.rating?.let {
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     Text(
-                        text = "${round(book.rating * 10) / 10.0}",
+                        text = "${round(it * 10) / 10.0}",
                         style = MaterialTheme.typography.bodyMedium
                     )
                     Icon(imageVector = Icons.Default.Star, contentDescription = "rating")
