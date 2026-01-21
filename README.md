@@ -22,3 +22,6 @@ Andorid app for challenge purposes about searching and listing books and visuali
 <img src="https://github.com/user-attachments/assets/6da92024-666c-47f3-adc5-807b956fc120" width="210"/> <img src="https://github.com/user-attachments/assets/56e96263-3b38-4a92-b1d2-4c6d6683426e" width="210"/>
 
 </div>
+
+# Extra detail
+The `feature/modularization` branch contains the modularized version of the project.
